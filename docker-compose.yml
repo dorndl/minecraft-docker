@@ -1,0 +1,18 @@
+services:
+  Minecraft:
+    image: minecraft-docker:latest
+    container_name: minecraft_server
+    ports:
+      - "25565:25565/tcp"
+
+    environment:
+      MC_LOADER: "vanilla"  # Options: vanilla, forge, neoforge, fabric, paper, folia
+      MC_VERSION: "26.3"
+      EULA: "false"
+      # MEM_MAX: "4G"
+      # MEM_MIN: "2G"
+
+    volumes:
+      - ./container:/srv/mc
+
+    restart: unless-stopped
